@@ -8,13 +8,27 @@ EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
+		Debug|x64 = Debug|x64
+		DLL-Import Debug|Win32 = DLL-Import Debug|Win32
+		DLL-Import Debug|x64 = DLL-Import Debug|x64
+		DLL-Import Release|Win32 = DLL-Import Release|Win32
+		DLL-Import Release|x64 = DLL-Import Release|x64
 		Release|Win32 = Release|Win32
+		Release|x64 = Release|x64
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{838062C9-A03C-41F6-BCE7-86BC768FACFA}.Debug|Win32.ActiveCfg = Debug|Win32
 		{838062C9-A03C-41F6-BCE7-86BC768FACFA}.Debug|Win32.Build.0 = Debug|Win32
+		{838062C9-A03C-41F6-BCE7-86BC768FACFA}.Debug|x64.ActiveCfg = Debug|Win32
+		{838062C9-A03C-41F6-BCE7-86BC768FACFA}.DLL-Import Debug|Win32.ActiveCfg = Debug|Win32
+		{838062C9-A03C-41F6-BCE7-86BC768FACFA}.DLL-Import Debug|Win32.Build.0 = Debug|Win32
+		{838062C9-A03C-41F6-BCE7-86BC768FACFA}.DLL-Import Debug|x64.ActiveCfg = Debug|Win32
+		{838062C9-A03C-41F6-BCE7-86BC768FACFA}.DLL-Import Release|Win32.ActiveCfg = Release|Win32
+		{838062C9-A03C-41F6-BCE7-86BC768FACFA}.DLL-Import Release|Win32.Build.0 = Release|Win32
+		{838062C9-A03C-41F6-BCE7-86BC768FACFA}.DLL-Import Release|x64.ActiveCfg = Release|Win32
 		{838062C9-A03C-41F6-BCE7-86BC768FACFA}.Release|Win32.ActiveCfg = Release|Win32
 		{838062C9-A03C-41F6-BCE7-86BC768FACFA}.Release|Win32.Build.0 = Release|Win32
+		{838062C9-A03C-41F6-BCE7-86BC768FACFA}.Release|x64.ActiveCfg = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

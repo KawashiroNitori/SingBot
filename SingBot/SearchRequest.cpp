@@ -41,15 +41,15 @@ void SearchRequest::encryptBody()
 	this->aesSecondKey = Utils::randomStr();
 	this->params = Utils::AESEncrypt(Utils::AESEncrypt(body, AES_FIRST_KEY, AES_IV), aesSecondKey, AES_IV);
 	this->encSecKey = Utils::RSAEncrypt(aesSecondKey, RSA_N, RSA_E);
-	CQ_addLog(Utils::AuthCode, CQLOG_DEBUG, "Plain", this->body.c_str());
-	CQ_addLog(Utils::AuthCode, CQLOG_DEBUG, "params", this->params.c_str());
-	CQ_addLog(Utils::AuthCode, CQLOG_DEBUG, "AESKey", this->aesSecondKey.c_str());
-	CQ_addLog(Utils::AuthCode, CQLOG_DEBUG, "encSecKey", this->encSecKey.c_str());
+	//CQ_addLog(Utils::AuthCode, CQLOG_DEBUG, "Plain", this->body.c_str());
+	//CQ_addLog(Utils::AuthCode, CQLOG_DEBUG, "params", this->params.c_str());
+	//CQ_addLog(Utils::AuthCode, CQLOG_DEBUG, "AESKey", this->aesSecondKey.c_str());
+	//CQ_addLog(Utils::AuthCode, CQLOG_DEBUG, "encSecKey", this->encSecKey.c_str());
 }
 
 SearchRequest::SearchRequest(string keyword, int limit)
 {
-	CQ_addLog(Utils::AuthCode, CQLOG_DEBUG, "Keyword", keyword.c_str());
+	//CQ_addLog(Utils::AuthCode, CQLOG_DEBUG, "Keyword", keyword.c_str());
 	this->keyword = Utils::convertGBKtoUTF8(keyword);
 	this->limit = limit;
 	this->body = this->constructBody();
@@ -64,7 +64,7 @@ SearchRequest::~SearchRequest()
 SearchResult SearchRequest::perform()
 {
 	string post = "params=" + Utils::UrlEncode(this->params) + "&encSecKey=" + this->encSecKey;
-	CQ_addLog(Utils::AuthCode, CQLOG_DEBUG, "post", post.c_str());
+	//CQ_addLog(Utils::AuthCode, CQLOG_DEBUG, "post", post.c_str());
 	string response_str;
 	Json::Value response;
 	Json::Reader reader;

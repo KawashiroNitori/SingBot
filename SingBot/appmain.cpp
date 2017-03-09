@@ -44,6 +44,8 @@ CQEVENT(int32_t, __eventDisable, 0)() {
 
 
 CQEVENT(int32_t, __eventPrivateMsg, 24)(int32_t subType, int32_t sendTime, int64_t fromQQ, const char *msg, int32_t font) {
+	if (!enabled)
+		return EVENT_IGNORE;
 	string response = Session::Message(msg);
 	if (!response.empty())
 	{
@@ -55,6 +57,8 @@ CQEVENT(int32_t, __eventPrivateMsg, 24)(int32_t subType, int32_t sendTime, int64
 
 
 CQEVENT(int32_t, __eventGroupMsg, 36)(int32_t subType, int32_t sendTime, int64_t fromGroup, int64_t fromQQ, const char *fromAnonymous, const char *msg, int32_t font) {
+	if (!enabled)
+		return EVENT_IGNORE;
 	string response = Session::Message(msg);
 	if (!response.empty())
 	{
@@ -66,6 +70,8 @@ CQEVENT(int32_t, __eventGroupMsg, 36)(int32_t subType, int32_t sendTime, int64_t
 
 
 CQEVENT(int32_t, __eventDiscussMsg, 32)(int32_t subType, int32_t sendTime, int64_t fromDiscuss, int64_t fromQQ, const char *msg, int32_t font) {
+	if (!enabled)
+		return EVENT_IGNORE;
 	string response = Session::Message(msg);
 	if (!response.empty())
 	{

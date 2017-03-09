@@ -1,10 +1,9 @@
 #ifdef _DEBUG
 #pragma comment(lib, "..\\curl\\lib\\Debug\\libcurl.lib")
-#pragma comment(lib, "..\\curlpp\\Debug\\libcurlpp.lib")
 #pragma comment(lib, "..\\Debug\\lib_json.lib")
 #else
 #pragma comment(lib, "..\\curl\\builds\\libcurl-vc-x86-release-static-ipv6-sspi-winssl\\lib\\libcurl_a.lib")
-#pragma comment(lib, "..\\curlpp\\Release\\libcurlpp.lib")
+//#pragma comment(lib, "..\\curl\\lib\\Release\\libcurl.lib")
 #pragma comment(lib, "..\\Release\\lib_json.lib")
 #endif // _DEBUG
 
@@ -82,7 +81,13 @@ SearchResult SearchRequest::perform()
 	curl_easy_cleanup(hnd);
 	if (!reader.parse(response_str, response))
 	{
-		CQ_addLog(Utils::AuthCode, CQLOG_WARNING, "´íÎó", response_str.c_str());
+		CQ_addLog(Utils::AuthCode, CQLOG_DEBUG, "´íÎó", response_str.c_str());
+		CQ_addLog(Utils::AuthCode, CQLOG_DEBUG, "Plain", this->body.c_str());
+		CQ_addLog(Utils::AuthCode, CQLOG_DEBUG, "params", this->params.c_str());
+		CQ_addLog(Utils::AuthCode, CQLOG_DEBUG, "AESKey", this->aesSecondKey.c_str());
+		CQ_addLog(Utils::AuthCode, CQLOG_DEBUG, "encSecKey", this->encSecKey.c_str());
+		CQ_addLog(Utils::AuthCode, CQLOG_DEBUG, "Keyword", this->keyword.c_str());
+		CQ_addLog(Utils::AuthCode, CQLOG_DEBUG, "post", post.c_str());
 		SearchResult result;
 		return result;
 	}

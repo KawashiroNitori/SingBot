@@ -13,6 +13,7 @@
 #include "integer.h"
 #include "nbtheory.h"
 #include "misc.h"
+#include "cqsdk/cqp.h"
 #include <locale>
 #include <codecvt>
 #include <random>
@@ -106,6 +107,13 @@ string Utils::RSAEncrypt(string data, string N, string E)
 
 	Integer output = a_exp_b_mod_c(plain, publicExponent, modulus);
 	string output_str = IntToString(output, 16);
+	if (output_str.length() < 256)
+	{
+		CQ_addLog(AuthCode, CQLOG_DEBUG, "´¥·¢²¹Áã", output_str.c_str());
+		int len = 256 - output_str.length();
+		for (int i = 0; i < len; i++)
+			output_str.insert(0, "0");
+	}
 	output_str = toLowerCase(output_str);
 	return output_str;
 }

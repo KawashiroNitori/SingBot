@@ -99,6 +99,7 @@
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>..\curl\include;..\cryptopp;..\jsoncpp\include;..\curlpp\include</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>

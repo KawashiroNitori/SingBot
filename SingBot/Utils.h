@@ -9,6 +9,7 @@ public:
 	static int AuthCode;
 public:
 	static string convertGBKtoUTF8(string str);
+	static string convertUTF8toGBK(string str);
 	static string b64encode(string str);
 	static string b64decode(string str);
 	static string AESEncrypt(string data, string key, string iv);

@@ -35,6 +35,25 @@ std::string Utils::convertGBKtoUTF8(string str)
 	return utf8_str;
 }
 
+std::string Utils::convertUTF8toGBK(string str)
+{
+	const char GBK_LOCALE_NAME[] = ".936";
+	const char UTF8_LOCALE_NAME[] = "";
+	wstring_convert<codecvt_byname<wchar_t, char, mbstate_t>> cv1(new codecvt_byname<wchar_t, char, mbstate_t>(GBK_LOCALE_NAME));
+	wstring_convert<codecvt_utf8<wchar_t>> cv2;
+	wstring tmp_wstr = cv2.from_bytes(str);
+	std::vector<char> buff(tmp_wstr.size() * 2);
+	std::locale loc("zh-CN");
+	mbstate_t state = {};
+	const wchar_t* pwszNext = nullptr;
+	char* pszNext = nullptr;
+	int res = std::use_facet<std::codecvt<wchar_t, char, mbstate_t> >
+		(loc).out(state,
+		tmp_wstr.data(), tmp_wstr.data() + tmp_wstr.size(), pwszNext,
+		buff.data(), buff.data() + buff.size(), pszNext);
+	return string(buff.data(), pszNext);
+}
+
 std::string Utils::b64encode(string str)
 {
 	string encoded;

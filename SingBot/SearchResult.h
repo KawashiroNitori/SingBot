@@ -22,5 +22,6 @@ public:
 	int getCount() const { return count; }
 	int getCode() const { return code; }
 	int getTopSongID() const;
+	Json::Value getTopSong() const;
 };
 

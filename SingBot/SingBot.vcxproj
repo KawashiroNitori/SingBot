@@ -13,9 +13,11 @@
   <ItemGroup>
     <ClInclude Include="appmain.h" />
     <ClInclude Include="cqsdk\cqp.h" />
+    <ClInclude Include="Request.h" />
     <ClInclude Include="SearchRequest.h" />
     <ClInclude Include="SearchResult.h" />
     <ClInclude Include="Session.h" />
+    <ClInclude Include="SongInfoRequest.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Utils.h" />
@@ -23,9 +25,11 @@
   <ItemGroup>
     <ClCompile Include="appmain.cpp" />
     <ClCompile Include="dllmain.cpp" />
+    <ClCompile Include="Request.cpp" />
     <ClCompile Include="SearchRequest.cpp" />
     <ClCompile Include="SearchResult.cpp" />
     <ClCompile Include="Session.cpp" />
+    <ClCompile Include="SongInfoRequest.cpp" />
     <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="Utils.cpp" />
   </ItemGroup>

@@ -31,3 +31,11 @@ int SearchResult::getTopSongID() const
 	else
 		return 0;
 }
+
+Json::Value SearchResult::getTopSong() const
+{
+	if (count)
+		return this->songs[0];
+	else
+		return Json::Value();
+}

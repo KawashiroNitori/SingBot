@@ -18,6 +18,7 @@
 #include <codecvt>
 #include <random>
 #include <ctime>
+#include <Windows.h>
 
 using namespace CryptoPP;
 
@@ -37,21 +38,17 @@ std::string Utils::convertGBKtoUTF8(string str)
 
 std::string Utils::convertUTF8toGBK(string str)
 {
-	const char GBK_LOCALE_NAME[] = ".936";
-	const char UTF8_LOCALE_NAME[] = "";
-	wstring_convert<codecvt_byname<wchar_t, char, mbstate_t>> cv1(new codecvt_byname<wchar_t, char, mbstate_t>(GBK_LOCALE_NAME));
-	wstring_convert<codecvt_utf8<wchar_t>> cv2;
-	wstring tmp_wstr = cv2.from_bytes(str);
-	std::vector<char> buff(tmp_wstr.size() * 2);
-	std::locale loc("zh-CN");
-	mbstate_t state = {};
-	const wchar_t* pwszNext = nullptr;
-	char* pszNext = nullptr;
-	int res = std::use_facet<std::codecvt<wchar_t, char, mbstate_t> >
-		(loc).out(state,
-		tmp_wstr.data(), tmp_wstr.data() + tmp_wstr.size(), pwszNext,
-		buff.data(), buff.data() + buff.size(), pszNext);
-	return string(buff.data(), pszNext);
+	const int CP_GBK = 54936;
+	int size = MultiByteToWideChar(CP_UTF8, 0, str.c_str(), -1, NULL, 0);
+	wchar_t* wstr = new wchar_t[size + 1];
+	MultiByteToWideChar(CP_UTF8, 0, str.c_str(), -1, wstr, size);
+	int ansi_size = WideCharToMultiByte(CP_GBK, 0, wstr, -1, NULL, 0, NULL, false);
+	char* new_str = new char[ansi_size + 1];
+	WideCharToMultiByte(CP_GBK, 0, wstr, -1, new_str, ansi_size, NULL, false);
+	string res(new_str);
+	delete[] wstr;
+	delete[] new_str;
+	return res;
 }
 
 std::string Utils::b64encode(string str)
